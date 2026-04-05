@@ -155,16 +155,18 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Asset Allocation -->
                 <div class="p-6 rounded-2xl shadow-sm border bg-white border-slate-200 dark:bg-slate-900 dark:border-slate-800 transition-colors">
-                    <h2 class="text-lg font-bold mb-6 flex items-center gap-2">
-                        <i data-lucide="pie-chart" class="text-blue-500"></i>
-                        Bezit Verdeling
-                    </h2>
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-lg font-bold flex items-center gap-2">
+                            <i data-lucide="pie-chart" class="text-blue-500"></i>
+                            Bezit Verdeling
+                        </h2>
+                        <div class="text-right">
+                            <div class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Totaal Bezit</div>
+                            <div id="doughnut-total" class="text-lg font-black text-blue-600 dark:text-blue-400 tabular-nums">€ 0</div>
+                        </div>
+                    </div>
                     <div class="h-[250px] w-full relative">
                         <canvas id="doughnutChart"></canvas>
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
-                            <div class="text-xs text-slate-500 uppercase font-bold">Totaal</div>
-                            <div id="doughnut-total" class="text-lg font-black">€ 0</div>
-                        </div>
                     </div>
                 </div>
 
@@ -177,7 +179,7 @@
                         </h2>
                         <div class="flex items-center gap-2 px-4 py-2 rounded-xl border bg-slate-50 border-slate-200 dark:bg-slate-800 dark:border-slate-700 transition-colors">
                             <span class="text-xs text-slate-500 font-medium">Doel: €</span>
-                            <input type="number" id="goal-input" class="w-24 bg-transparent border-none p-0 text-sm font-bold focus:ring-0 text-slate-800 dark:text-slate-100 outline-none">
+                            <input type="text" id="goal-input" class="w-24 bg-transparent border-none p-0 text-sm font-bold focus:ring-0 text-slate-800 dark:text-slate-100 outline-none" placeholder="0,00">
                         </div>
                     </div>
                     
