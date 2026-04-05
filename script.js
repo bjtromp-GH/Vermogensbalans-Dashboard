@@ -4,8 +4,15 @@ let state = {
     date: new Date().toISOString().split('T')[0],
     // Load current balance from localStorage or use defaults
     assets: JSON.parse(localStorage.getItem('current_assets')) || [
-        { id: '1', description: 'Spaarrekening', amount: 5000 },
-        { id: '2', description: 'Beleggingen', amount: 2500 }
+        { id: '1', description: 'Spaarrekening A', amount: 10000 },
+        { id: '2', description: 'Spaarrekening B', amount: 5000 },
+        { id: '3', description: 'Spaarrekening C', amount: 2500 },
+        { id: '4', description: 'Beleggingsrekening', amount: 15000 },
+        { id: '5', description: 'Bitcoin', amount: 3500 },
+        { id: '6', description: 'Goud', amount: 2000 },
+        { id: '7', description: 'Vastgoed', amount: 0 },
+        { id: '8', description: 'Auto', amount: 15000 },
+        { id: '9', description: 'Bezittingen', amount: 5000 }
     ],
     debts: JSON.parse(localStorage.getItem('current_debts')) || [
         { id: '1', description: 'Hypotheek', amount: 1000 },
@@ -242,6 +249,12 @@ function loadHistoryEntry(id) {
     const entry = state.history.find(e => e.id === id);
     if (!entry) return;
     
+    // Check if snapshot data exists
+    if (!entry.assets || !entry.debts) {
+        alert("Deze oudere historie-entry bevat geen gedetailleerde lijst met bezittingen/schulden, alleen het totaalbedrag.");
+        return;
+    }
+
     if (!confirm(`Wil je de balans van ${new Date(entry.date).toLocaleDateString('nl-NL')} laden? Dit overschrijft je huidige invoer.`)) {
         return;
     }
@@ -424,6 +437,7 @@ function updateChartsTheme() {
 window.updateRow = updateRow;
 window.removeRow = removeRow;
 window.deleteHistoryEntry = deleteHistoryEntry;
+window.loadHistoryEntry = loadHistoryEntry;
 
 // Start
 if (document.readyState === 'loading') {
